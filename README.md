@@ -6,7 +6,7 @@ This tool searches for nearby Wi-Fi networks and performs authentication attempt
 git clone https://github.com/caique-garbim/WiFi-D3fudd.git
 ```
 ```
-cd WiFi-D3fudd\
+cd WiFi-D3fudd/
 ```
 ```
 sudo chmod a+x WiFi-D3fudd.sh
