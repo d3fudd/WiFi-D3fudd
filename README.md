@@ -22,6 +22,6 @@ sudo chmod a+x WiFi-D3fudd.sh
 ```
 sudo ./WiFi-D3fudd.sh
 ```
-![image](https://user-images.githubusercontent.com/76706456/172023025-f459ceaa-257e-4992-8184-c9a210ca6c2e.png)
+![image](https://user-images.githubusercontent.com/76706456/172023673-17ce94ff-f17a-4aea-852e-dad14629f070.png)
 
-![image](https://user-images.githubusercontent.com/76706456/172023082-af94928a-782d-401a-b067-42b149786cb8.png)
+![image](https://user-images.githubusercontent.com/76706456/172023683-e7983964-1848-4a10-93f8-b084bcdf834d.png)
