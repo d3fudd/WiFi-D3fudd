@@ -20,7 +20,7 @@ cd WiFi-D3fudd/
 sudo chmod a+x WiFi-D3fudd.sh
 ```
 ```
-./WiFi-D3fudd.sh
+sudo ./WiFi-D3fudd.sh
 ```
 ![image](https://user-images.githubusercontent.com/76706456/172023025-f459ceaa-257e-4992-8184-c9a210ca6c2e.png)
 
