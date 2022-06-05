@@ -38,7 +38,7 @@ echo -e "${BLUE} [*] Possibly ${RED}vulnerable${END}${BLUE} wifi networks: ${END
 echo " "
 
 # Nmcli busca por redes wifi e joga a saída para temp.txt
-nmcli -g bssid,ssid dev wifi | egrep "CLARO\_|SKY\_|NET\_" | grep -v "\#NET" > /tmp/temp.txt
+nmcli -g bssid,ssid dev wifi | egrep "CLARO\_|SKY\_|NET\_|VIVO\-|VIVOFIBRA\-" | grep -v "\#NET" > /tmp/temp.txt
 # Sed limpa o temp.txt e salva em temp1.txt
 cat /tmp/temp.txt | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' > /tmp/temp1.txt
 # Remove o temp.txt
