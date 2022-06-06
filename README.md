@@ -37,35 +37,39 @@ Muitos roteadores, principalmente fornecidos pelo provedor de internet contratad
 
 Uma vez que esses dados são públicos à qualquer um que busque por redes Wi-Fi, fica fácil para qualquer indivíduo testar algumas combinações e conseguir se autenticar na rede com poucas tentativas, principalmente se o SSID (padrão) indicar um provedor cujo o padrão já é conhecido.
 
-Exemplo 1:
+**Exemplo 1:**
 Geralmente os roteadores com o SSID iniciados com “NET_” possuem como senha o 3º ao 6º byte.
 
 Suponhamos que temos um roteador NET com a seguinte configuração:
-SSID: NET_3C4D5E6F
-BSSID: 1A:2B:3C:4D:5E:6F
+<br>
+**SSID: NET_3C4D5E6F <br>
+BSSID: 1A:2B:3C:4D:5E:6F**
 
-É valido dizer que a senha pode ser: 3C4D5E6F
+É valido dizer que a senha pode ser: **3C4D5E6F**
 
-Exemplo 2:
+**Exemplo 2:**
 É notável que o SSID (padrão) possua uma semelhança com o BSSID, às vezes com uma diferença no último byte. Neste caso é valido tentar de ambas as formas:
-SSID: NET_3C4D5EFF
-BSSID: 1A:2B:3C:4D:5E:6F
+<br>
+**SSID: NET_3C4D5EFF <br>
+BSSID: 1A:2B:3C:4D:5E:6F**
 
-É valido dizer que a senha pode ser: 3C4D5E6F ou  3C4D5EFF
+É valido dizer que a senha pode ser: **3C4D5E6F** ou  **3C4D5EFF**
 
-Exemplo 3:
+**Exemplo 3:**
 Suponhamos que temos um roteador VIVO. Mesmo sendo diferente dos primeiros exemplos, muitos modelos sofrem com o mesmo problema. Observe a seguinte configuração:
-SSID: VIVO-5E6F
-BSSID: 1A:2B:3C:4D:5E:6F
+<br>
+**SSID: VIVO-5E6F <br>
+BSSID: 1A:2B:3C:4D:5E:6F**
 
-É válido dizer que a senha pode ser: 2B3C4D5E6F
+É válido dizer que a senha pode ser: **2B3C4D5E6F**
 
-Exemplo 4:
+**Exemplo 4:**
 Caso o último byte não corresponder com os últimos 2 caracteres do SSID, é válido tentar de ambas as formas:
-SSID: VIVO-5E66
-BSSID: 1A:2B:3C:4D:5E:6F
+<br>
+**SSID: VIVO-5E66 <br>
+BSSID: 1A:2B:3C:4D:5E:6F**
 
-É válido dizer que a senha pode ser: 2B3C4D5E6F ou  2B3C4D5E66
+É válido dizer que a senha pode ser: **2B3C4D5E6F** ou  **2B3C4D5E66**
 
 O mesmo problema se repete em alguns roteadores CLARO e SKY.
 
@@ -73,5 +77,8 @@ Por fim, entendemos que por mais complexa que a senha possa parecer, não signif
 
 Esse tipo de vulnerabilidade permite que um intruso, uma vez autenticado, possa causar danos de diversas formas. Seja interceptando o tráfego ou movimentando-se lateralmente pela rede, explorando hosts, servidores, escalando seu privilégio.
 
-Referência:
+#
+
+### Referência:
+<br>
 https://olhardigital.com.br/2019/03/15/noticias/roteadores-da-vivo-apresentam-vulnerabilidade-que-pode-comprometer-a-rede/
