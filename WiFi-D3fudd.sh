@@ -64,7 +64,7 @@ then
 	# Nmcli busca por redes wifi e joga a saída para temp.txt
 	nmcli -g bssid,ssid dev wifi | egrep "CLARO\_|SKY\_|NET\_|VIVO\-|VIVOFIBRA\-" | grep -v "\#NET" > /tmp/temp.txt
 	# Sed limpa o temp.txt e salva em temp1.txt
-	cat /tmp/temp.txt | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' > /tmp/temp1.txt
+	cat /tmp/temp.txt | sed 's/\\//g' > /tmp/temp1.txt
 	# Remove o temp.txt
 	rm -rf /tmp/temp.txt
 	# Separa o SSID em um arquivo
@@ -122,22 +122,22 @@ then
 	
 	# Monta a mini wordlist
 	# 3º byte em diante
-	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/password_atk.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' > /tmp/password_atk.txt
 	# 2º byte em diante
-	cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' >> /tmp/password_atk.txt
 	# 1º byte em diante
-	cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' >> /tmp/password_atk.txt
 	# Alterando o último byte (3º byte em diante)
 	cat /tmp/ssid_atk.txt | sed 's/_ext//' | sed 's/_Ext//' | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
-	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' > /tmp/temp_bssidclean.txt
 	paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 	# Alterando o último byte (2º byte em diante)
 	cat /tmp/ssid_atk.txt | sed 's/_ext//' | sed 's/_Ext//' | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
-	cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' > /tmp/temp_bssidclean.txt
 	paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 	# Alterando o último byte (1º byte em diante)
 	cat /tmp/ssid_atk.txt | sed 's/_ext//' | sed 's/_Ext//' | cut -d "_" -f2 | rev | cut -c 1,2 | rev > /tmp/temp_newbyte.txt
-	cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' |sed 's/://' | sed 's/://' | sed 's/://' > /tmp/temp_bssidclean.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' > /tmp/temp_bssidclean.txt
 	paste -d '' /tmp/temp_bssidclean.txt /tmp/temp_newbyte.txt >> /tmp/password_atk.txt
 	
 	# Exibe a wordlist
@@ -203,7 +203,7 @@ then
 	# Nmcli busca por redes wifi e joga a saída para temp.txt
 	nmcli -g bssid,ssid dev wifi | grep -v "\#NET" > /tmp/temp.txt
 	# Sed limpa o temp.txt e salva em temp1.txt
-	cat /tmp/temp.txt | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' | sed 's/\\//' > /tmp/temp1.txt
+	cat /tmp/temp.txt | sed 's/\\//g' > /tmp/temp1.txt
 	# Remove o temp.txt
 	rm -rf /tmp/temp.txt
 	# Separa o SSID em um arquivo
@@ -261,11 +261,11 @@ then
 	
 	# Monta a mini wordlist
 	# 3º byte em diante
-	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' > /tmp/password_atk.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' > /tmp/password_atk.txt
 	# 2º byte em diante
-	cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' >> /tmp/password_atk.txt
 	# 1º byte em diante
-	cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' | sed 's/://' >> /tmp/password_atk.txt
+	cat /tmp/bssid_atk.txt | cut -d ":" -f1,2,3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' >> /tmp/password_atk.txt
 	
 	# Exibe a wordlist
 	echo -e "${BLUE} [*] Passwords to try ${END}"
