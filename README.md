@@ -11,16 +11,7 @@ apt-get install network-manager
 ```
 ### 📋 Como usar
 ```
-git clone https://github.com/caique-garbim/WiFi-D3fudd.git
-```
-```
-cd WiFi-D3fudd/
-```
-```
-sudo chmod a+x WiFi-D3fudd.sh
-```
-```
-sudo ./WiFi-D3fudd.sh
+curl https://raw.githubusercontent.com/caique-garbim/WiFi-D3fudd/main/WiFi-D3fudd.sh > WiFi-D3fudd.sh && sudo bash ./WiFi-D3fudd.sh
 ```
 ![image](https://user-images.githubusercontent.com/76706456/172023673-17ce94ff-f17a-4aea-852e-dad14629f070.png)
 
